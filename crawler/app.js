@@ -2,8 +2,8 @@ const fs = require('fs')
 const url = require('url')
 const rp = require('request-promise')
 const cheerio = require('cheerio')
-const down = require('./do')
-// const downloadImage = require('./download-image')
+// const down = require('./do')
+const downloadImage = require('download-image')
 const htmlDecode = require('./htmlDecode')
 const id = require('./config')
 
@@ -52,7 +52,7 @@ async function getAnswers(id, answerCount) {
           // 解析图片链接 获取文件名字
           let filename = url.parse(src).pathname.replace(/\//, '')
           // 下载图片
-          down(src, `./images/${id}/${filename}`)
+          downloadImage(src, `./images/${id}/${filename}`)
         }
       })
     })
